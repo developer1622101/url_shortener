@@ -4,7 +4,10 @@ const express = require("express")  ;
 const mongoose = require("mongoose") ;  
 const cors   = require("cors") ; 
 
-const {userRoutes } = require("./Routes/user") ; 
+const {userRoutes  } = require("./Routes/user") ;  
+const {urlRouter  } = require("./Routes/urls") ;  
+const { publicurlRoutes  } = require("./Routes/publicurls") ;  
+
 
 const app = express() ;  
 
@@ -12,7 +15,10 @@ app.use(cors()) ;
 
 app.use(express.json()) ;  
 
-app.use("/user" , userRoutes) ;  
+app.use("/auth" , userRoutes) ; 
+
+app.use("/user" ,  urlRouter ) ; 
+app.use("/tiny_url" ,  publicurlRoutes) ; 
 
 
 const main  = async () => { 
@@ -30,4 +36,3 @@ catch(e) {
 } 
 
 main() ; 
-

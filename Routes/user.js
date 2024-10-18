@@ -59,9 +59,6 @@ userRoutes.post("/signin" , async (req,  res) => {
 
   const token =  jwt.sign( { email :  user.email  } , jwt_secret  )  ;   
 
-  localStorage.setItem( 'token' , token ) ;    
-  
-
   res.json( { msg : "user logged in successfully"  , token : token }   ); 
 }  catch(e) { 
     res.send("internal server error") ; 
